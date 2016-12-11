@@ -1,46 +1,62 @@
-<a class="waves-effect waves-light btn" onclick="init()">Iniciar</a>
-<a class="waves-effect waves-light btn" onclick="para()">Parar</a>
+<div class="container" id="btnIteracoes" style="margin-top:15px;">
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="iteracoes" type="number" class="validate" name="number" required>
+      <label for="iteracoes">Nº Iterações</label>
+    </div>
+  </div>
+  <input type="text" name="hidden" id="fila" hidden>
+  <div class="row">
+    <a class="waves-effect waves-light btn" onclick="init()">Iniciar</a>
+  </div>
+</div>
+
+<div class="container center-align" id="loading" style="margin-top:20%;">
+    <div class="preloader-wrapper active valign-wrapper">
+      <div class="spinner-layer spinner-red-only valign-wrapper">
+        <div class="circle-clipper left valign-wrapper">
+          <div class="circle valign-wrapper"></div>
+        </div><div class="gap-patch valign-wrapper">
+          <div class="circle valign-wrapper"></div>
+        </div><div class="circle-clipper right valign-wrapper">
+          <div class="circle valign-wrapper"></div>
+        </div>
+      </div>
+    </div>
+</div>
 
 <script>
 
-  var ferry = {
-    nome: "balsa",
-    carrosMax: 15,
-    velocidade: 3.6,
-    travessia: 250
-  }
-
-  var fila = Array();
+$( document ).ready(function() {
+  $("#loading").hide();
+});
 
   function init(){
-    console.log(fila);
-    setTimeout(enfileira(ferry, fila), 1);
+    $("#btnIteracoes").hide();
+    $("#loading").show();
+
+    var ferry = {
+	    nome: "balsa",
+	    carrosMax: 15,
+	    velocidade: 1.3,
+	    travessia: 250
+	  }
+
+    var post = { iteracoes: $("#iteracoes").val(),
+                fila: JSON.stringify(fila),
+                carrosMax: ferry.carrosMax,
+                velocidade: ferry.velocidade,
+                travessia: ferry.travessia}
+
+    $.post( "/estatistica/travessia", post)
+    .done(function( data ) {
+      fila = data;
+      console.log(fila);
+      $("#fila").val(fila);
+      $("#btnIteracoes").show();
+      $("#loading").hide();
+    });
   }
 
-  function enfileira(ferry, fila){
-    while (fila.length < ferry.carrosMax) {
-      //console.log(new Date().getTime());
-      fila.push(new Date().getTime());
-      setTimeout(sleep(Math.floor((Math.random() * 360) + 5)), 0);
-    }
-    setTimeout(sleepfila(2000, fila, ferry), 0);
-  }
 
-  function sleep(delay) {
-    var start = new Date().getTime();
-    while (new Date().getTime() < start + delay);
-  }
-
-  function sleepfila(delay, fila, ferry) {
-    var start = new Date().getTime();
-    for (var i = 0; i < ferry.carrosMax; i++) {
-      fila.pop();
-    }
-    while (new Date().getTime() < start + delay){
-      fila.push(new Date().getTime());
-      setTimeout(sleep(Math.floor((Math.random() * 360) + 5)), 1);
-    }
-    //console.log(fila);
-    console.log('fim 1 iteracao')
-  }
 </script>

@@ -46,7 +46,9 @@ module.exports.routes = {
 
   '/simulacao/grafico': {
     view: 'simulacao/grafico'
-  }
+  },
+
+  'POST /estatistica/travessia' : 'DadoTravessiaController.realizarTravessia'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

@@ -1,0 +1,29 @@
+<div class="container" id="btnIteracoes" style="margin-top:15px;">
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="iteracoes" type="number" class="validate" name="number" required>
+      <label for="iteracoes">Nº Iterações</label>
+    </div>
+  </div>
+  <input type="text" name="hidden" id="fila" class="hidden" hidden>
+  <div class="row">
+    <a class="waves-effect waves-light btn" onclick="init()">Iniciar</a>
+  </div>
+  <div class="container">
+    <canvas id="tutorial" width="150" height="150"></canvas>
+  </div>
+</div>
+
+<div class="container center-align" id="loading" style="margin-top:20%;">
+    <div class="preloader-wrapper active valign-wrapper">
+      <div class="spinner-layer spinner-red-only valign-wrapper">
+        <div class="circle-clipper left valign-wrapper">
+          <div class="circle valign-wrapper"></div>
+        </div><div class="gap-patch valign-wrapper">
+          <div class="circle valign-wrapper"></div>
+        </div><div class="circle-clipper right valign-wrapper">
+          <div class="circle valign-wrapper"></div>
+        </div>
+      </div>
+    </div>
+</div>
