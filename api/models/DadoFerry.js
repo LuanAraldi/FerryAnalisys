@@ -8,30 +8,34 @@
 module.exports = {
 
   attributes: {
-      tripulantesMax: {
-          type: 'integer'
-      },
+    nome: {
+      type: 'string'
+    },
 
-      pessoasMax: {
-          type: 'integer'
-      },
+    tripulantesMax: {
+        type: 'integer'
+    },
 
-      carrosMax: {
-          type: 'integer'
-      },
+    pessoasMax: {
+        type: 'integer'
+    },
 
-      velocidade: {
-        type: 'float'
-      },
+    carrosMax: {
+        type: 'integer'
+    },
 
-      travessia: {
-        type: 'float'
-      },
+    velocidade: {
+      type: 'float'
+    },
 
-      dadosTravessia: {
-        collection: "DadoTravessia",
-        via: "idFerry"
-      }
+    travessia: {
+      type: 'float'
+    },
+
+    dadosTravessia: {
+      collection: "DadoTravessia",
+      via: "idFerry"
+    }
   }
 
 };

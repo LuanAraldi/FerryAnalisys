@@ -1,0 +1,46 @@
+<a class="waves-effect waves-light btn" onclick="init()">Iniciar</a>
+<a class="waves-effect waves-light btn" onclick="para()">Parar</a>
+
+<script>
+
+  var ferry = {
+    nome: "balsa",
+    carrosMax: 15,
+    velocidade: 3.6,
+    travessia: 250
+  }
+
+  var fila = Array();
+
+  function init(){
+    console.log(fila);
+    setTimeout(enfileira(ferry, fila), 1);
+  }
+
+  function enfileira(ferry, fila){
+    while (fila.length < ferry.carrosMax) {
+      //console.log(new Date().getTime());
+      fila.push(new Date().getTime());
+      setTimeout(sleep(Math.floor((Math.random() * 360) + 5)), 0);
+    }
+    setTimeout(sleepfila(2000, fila, ferry), 0);
+  }
+
+  function sleep(delay) {
+    var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
+  }
+
+  function sleepfila(delay, fila, ferry) {
+    var start = new Date().getTime();
+    for (var i = 0; i < ferry.carrosMax; i++) {
+      fila.pop();
+    }
+    while (new Date().getTime() < start + delay){
+      fila.push(new Date().getTime());
+      setTimeout(sleep(Math.floor((Math.random() * 360) + 5)), 1);
+    }
+    //console.log(fila);
+    console.log('fim 1 iteracao')
+  }
+</script>

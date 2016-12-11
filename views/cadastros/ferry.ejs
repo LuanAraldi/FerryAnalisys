@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <form class="col s12" action="dadoFerry/create" method="POST">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="nome" type="text" class="validate" name="nome" required>
+          <label for="nome">Nome</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="carros" type="number" class="validate" name="carrosMax" required>
+          <label for="carros">Qtd. Carros Máximo</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="travessia" type="number" class="validate" name="travessia" required>
+          <label for="travessia">Tamanho Travessia em Metros</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="velocidade" type="number" class="validate" name="velocidade" required>
+          <label for="velocidade">Velocidade em m/s</label>
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light" type="submit">Salvar
+        <i class="material-icons right"></i>
+      </button>
+    </form>
+  </div>
+</div>

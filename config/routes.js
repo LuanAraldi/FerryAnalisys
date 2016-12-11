@@ -36,7 +36,17 @@ module.exports.routes = {
     view: 'teste'
   },
 
+  '/cadastroFerry': {
+    view: 'cadastros/ferry'
+  },
 
+  '/simulacao/estatistico': {
+    view: 'simulacao/estatistico'
+  },
+
+  '/simulacao/grafico': {
+    view: 'simulacao/grafico'
+  }
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
