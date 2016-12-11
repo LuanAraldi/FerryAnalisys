@@ -55,6 +55,26 @@ try {
   }
 }
 
+var jquery;
+try {
+  jquery = require("jquery");
+} catch (e) {
+  console.error('Could not find dependency: `jquery`.');
+}
+
+var materialize;
+try {
+  materialize = require("materialize-css");
+} catch (e) {
+  console.error('Could not find dependency: `materialize-css`.');
+}
+
+var d3;
+try {
+  d3 = require("d3");
+} catch (e) {
+  console.error('Could not find dependency: `d3`.');
+}
 
 // Start server
 sails.lift(rc('sails'));

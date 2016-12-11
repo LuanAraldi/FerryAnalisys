@@ -33,10 +33,10 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'homepage'
+    view: 'teste'
   },
 
-  '/save-ferry': 'DadoFerryController.save'
+
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

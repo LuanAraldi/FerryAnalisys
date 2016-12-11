@@ -1,5 +1,5 @@
 /**
- * DadosFerry.js
+ * Dados.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
@@ -8,30 +8,25 @@
 module.exports = {
 
   attributes: {
-      tripulantesMax: {
-          type: 'integer'
+
+      pessoas: {
+        type: 'integer'
       },
 
-      pessoasMax: {
-          type: 'integer'
+      veiculos: {
+        type: 'integer'
       },
 
-      carrosMax: {
-          type: 'integer'
-      },
-
-      velocidade: {
+      tempoSaida: {
         type: 'float'
       },
 
-      travessia: {
-        type: 'float'
+      tempoChegada: {
+        type: 'float'  
       },
 
-      dadosTravessia: {
-        collection: "DadoTravessia",
-        via: "idFerry"
+      idFerry: {
+        model: "DadoFerry"
       }
   }
-
 };
