@@ -1,14 +1,31 @@
 <div class="container" id="btnIteracoes" style="margin-top:15px;">
   <div class="row">
-    <div class="input-field col s12">
+    <div class="input-field col s6">
       <input id="iteracoes" type="number" class="validate" name="number" required>
       <label for="iteracoes">Nº Iterações</label>
     </div>
+    <div class="input-field col s6">
+      <input id="quantidade" type="number" class="validate" name="quantidade" required>
+      <label for="iteracoes">Quantidade de Balsas</label>
+    </div>
   </div>
   <input type="text" name="hidden" id="fila" hidden>
+  <input type="text" name="hidden" id="filas" hidden>
   <div class="row">
     <a class="waves-effect waves-light btn" onclick="init()">Iniciar</a>
   </div>
+
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="card">
+        <div class="card-content black-text">
+          <span class="card-title">Fila por Travessia</span>
+            <canvas id="linhaportravessia" width="400" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <div class="container center-align" id="loading" style="margin-top:20%;">
@@ -32,13 +49,21 @@ $( document ).ready(function() {
 });
 
   function init(){
+    var ctx = $("#linhaportravessia");
     $("#btnIteracoes").hide();
     $("#loading").show();
+    console.log();
+
+    if ($("#filas").val()) {
+      var filas = JSON.parse("[" + $("#filas").val() + "]")
+    }else{
+      var filas = [0];
+    }
 
     var ferry = {
 	    nome: "balsa",
-	    carrosMax: 15,
-	    velocidade: 1.3,
+	    carrosMax: 35,
+	    velocidade: 1.3 * $("#quantidade").val() ,
 	    travessia: 250
 	  }
 
@@ -50,11 +75,60 @@ $( document ).ready(function() {
 
     $.post( "/estatistica/travessia", post)
     .done(function( data ) {
-      fila = data;
-      console.log(fila);
+      fila = data[data.length - 1];
+      //var filas = JSON.parse("[" + $("#filas").val() + "]");
+      //console.log(JSON.parse("[" + $("#filas").val() + "]"));
+      if (filas.length) {
+        var tamanho = filas.length + 1;
+      }else{
+        var tamanho = filas.length = 1;
+      }
+      console.log(data);
+      for (var i = 0; i < data.length; i++) {
+        filas.push(data[i].length);
+      }
+      console.log(filas);
       $("#fila").val(fila);
+      $("#filas").val(filas);
       $("#btnIteracoes").show();
       $("#loading").hide();
+
+      var label = [];
+      for (var i = 0; i <= filas.length; i++) {
+        label.push(i);
+      }
+
+      var data = {
+        labels: label,
+        datasets: [{
+          label: "Fila",
+          data: filas,
+          fill: false,
+          lineTension: 0.1,
+          backgroundColor: "rgba(75,192,192,0.4)",
+          borderColor: "rgba(75,192,192,1)",
+          borderCapStyle: 'butt',
+          borderDash: [],
+          borderDashOffset: 0.0,
+          borderJoinStyle: 'miter',
+          pointBorderColor: "rgba(75,192,192,1)",
+          pointBackgroundColor: "#fff",
+          pointBorderWidth: 1,
+          pointHoverRadius: 5,
+          pointHoverBackgroundColor: "rgba(75,192,192,1)",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointHoverBorderWidth: 2,
+          pointRadius: 1,
+          pointHitRadius: 10,
+          spanGaps: false,
+        }]
+      }
+      var myLineChart = new Chart(ctx, {
+          type: 'line',
+          data: data,
+          options: ['Travessia', 'Fila']
+      });
+
     });
   }
 

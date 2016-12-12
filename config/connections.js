@@ -74,14 +74,14 @@ module.exports.connections = {
   *                                                                          *
   *                                                                          *
   ***************************************************************************/
-   herokupgsql: {
-    adapter: 'sails-postgresql',
-    host: 'ec2-54-221-225-43.compute-1.amazonaws.com',
-    user: 'yqnusiwdezilzn', // optional
-    password: 'KCAgMHoLV_qpJjHvu4PTQOGU3G', // optional
-    database: 'd5q50nkt31gvvu', //optional
-    ssl: true
-  }
+  //  herokupgsql: {
+  //   adapter: 'sails-postgresql',
+  //   host: 'ec2-54-221-225-43.compute-1.amazonaws.com',
+  //   user: 'yqnusiwdezilzn', // optional
+  //   password: 'KCAgMHoLV_qpJjHvu4PTQOGU3G', // optional
+  //   database: 'd5q50nkt31gvvu', //optional
+  //   ssl: true
+  // }
 
 
   /***************************************************************************
