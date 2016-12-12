@@ -52,6 +52,19 @@ $( document ).ready(function() {
     var canvas = document.getElementById("carros");
     var context = canvas.getContext('2d');
 
+    var img1 = new Image();
+    img1.src = "../images/1.jpg";
+    var img2 = new Image();
+    img2.src = "../images/2.jpg";
+    var img3 = new Image();
+    img3.src = "../images/3.jpg";
+    var img4 = new Image();
+    img4.src = "../images/4.jpg";
+    var img5 = new Image();
+    img5.src = "../images/5.jpg";
+    var img6 = new Image();
+    img6.src = "../images/6.jpg";
+
     $("#btnIteracoes").hide();
     $("#loading").show();
     console.log();
@@ -97,47 +110,6 @@ $( document ).ready(function() {
       var aux = 0;
       var yaux = 0;
       for (var i = 0; i < filas[filas.length-1]; i++) {
-        // switch(){
-        //   case 1:
-        //     delete img;
-        //     var img = new Image();
-        //     img.src = "../images/1.jpg";
-        //     break;
-        //   case 2:
-        //     delete img;
-        //     var img = new Image();
-        //     img.src = "../images/2.jpg";
-        //     break;
-        //   case 3:
-        //     delete img;
-        //     var img = new Image();
-        //     img.src = "../images/3.jpg";
-        //     break;
-        //   case 4:
-        //     delete img;
-        //     var img = new Image();
-        //     img.src = "../images/4.jpg";
-        //     break;
-        //   case 5:
-        //     delete img;
-        //     var img = new Image();
-        //     img.src = "../images/5.jpg";
-        //     break;
-        //   case 6:
-        //     delete img;
-        //     var img = new Image();
-        //     img.src = "../images/6.jpg";
-        //     break;
-        //   default:
-        //
-        //     var img = new Image();
-        //     img.src = "../images/1.jpg";
-        //   break;
-        // }
-        delete img;
-        var img = new Image();
-        img.src = "../images/" + Math.floor((Math.random() * 6) + 1) + ".jpg";
-        console.log(img);
         if (i % 5 == 0 && i != 0) {
           aux += 80;
           yaux = 0;
@@ -145,7 +117,26 @@ $( document ).ready(function() {
         var x = aux;
         var y = 120 * yaux;
         yaux += 1;
-        context.drawImage(img,x,y,80,120);
+        switch (Math.floor((Math.random() * 6) + 1)) {
+          case 1:
+            context.drawImage(img1,x,y,80,120);
+            break;
+          case 2:
+            context.drawImage(img2,x,y,80,120);
+            break;
+          case 3:
+            context.drawImage(img3,x,y,80,120);
+            break;
+          case 4:
+            context.drawImage(img4,x,y,80,120);
+            break;
+          case 5:
+            context.drawImage(img5,x,y,80,120);
+            break;
+          case 6:
+            context.drawImage(img6,x,y,80,120);
+            break;
+        }
       }
 
     });
